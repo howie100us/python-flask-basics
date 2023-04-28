@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Movies to watch</title>
+    </head>
+
+
+    <body>
+      <h1>Movies to watch</h1>  
+
+      <h2> This collection belongd to {{name}}</h2>
+
+     <h3> Movies: {{movies}}   </h3>
+     <h3> First Movies: {{movies[0]}}   </h3>
+     <h3> Movies Range: {{movies[1:4]}}   </h3>
+
+     <ul><!-- logic from python code -->
+       {% for item in movies%}
+       <li>The movies is :{{item}}</li>
+       {% endfor %}
+     </ul>
+
+    </body>
+</html>

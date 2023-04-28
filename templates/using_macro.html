@@ -1,0 +1,18 @@
+
+{% import "macro_data.html" as macro_data %}
+<html>
+
+<head>
+    <title>Macro DEMO</title>
+    <link rel="stylesheet" href ="{{url_for("static",filename ="style.css")}}">
+</head>
+
+
+<body>
+  <h1>Macro DEMO</h1>  
+
+  {{macro_data.render_dict(movies)}}
+
+</body>
+
+</html>

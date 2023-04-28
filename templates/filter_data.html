@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>MoviData Filter</title>
+        <link rel="stylesheet" href ="{{url_for("static",filename ="style.css")}}">
+    </head>
+
+
+    <body>
+      <h2> Working with Jinja2 Filters</h2>
+ 
+       {% for movie,length in movies | dictsort(false,"value") %}
+       <ul>
+        <li>{{movie | title}} :{{length | round(1)}}</li>
+       </ul>
+
+       {%endfor%}
+       
+       <hr>
+
+       <ol>
+       <li>Default value        :{{name | default("value not define", true)}}</li><br>
+       <li>Uppercase            :{{film | capitalize}}</li><br>
+       <li>Length               :{{movies | length}} item in dictionery</li><br>
+       <li>First in Dictionary  :{{movies | first}}</li><br>
+       <li>Make List            :{{film | list}}</li><br>
+       <li>Replace data         :{{film | replace("carrol","Songs") | upper}} </li><br>
+
+
+       </ol>
+
+    </body>
+</html>

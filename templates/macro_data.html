@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Movies to watch</title>
+        <link rel="stylesheet" href ="{{url_for("static",filename ="style.css")}}">
+    </head>
+
+{% macro render_dict(dictionery)%}
+    <body>
+
+     <table><!-- logic from python code -->
+        <tr>
+          <th>Movies</th>  
+          <th>Length</th>  
+          <th>Comment</th>  
+        </tr>
+       {% for key,val in dictionery.items()%}
+       <tr>
+        <td>{{key}}</td>
+        <td>{{val}}</td>
+        <!-- if logics-->
+        {% if val <= 2%}
+        <td>Short</td>
+         {% elif val >=2 and val <= 3%}
+         <td>Medium</td>
+         {% else %}
+        <td style="color :red">Long</td>
+        {%endif%}
+      </tr>
+       {% endfor%}
+     </table>
+     {% endmacro%}
+    </body>
+</html>

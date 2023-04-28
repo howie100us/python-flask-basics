@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>Movies to watch</title>
+        <link rel="stylesheet" href ="{{url_for("static",filename ="style.css")}}">
+    </head>
+
+
+    <body>
+      <h1>Movies to watch</h1>  
+
+      <h2> This collection belongd to {{name}}</h2>
+
+     <table><!-- logic from python code -->
+        <tr>
+          <th>Movies</th>  
+          <th>Length</th>  
+          <th>Comment</th>  
+        </tr>
+       {% for movie,length in movies.items()%}
+       <tr>
+        <td>{{movie}}</td>
+        <td>{{length}}</td>
+        <!-- if logics-->
+        {% if length <= 2%}
+        <td>Short</td>
+         {% elif length >=2 and length <= 3%}
+         <td>Medium</td>
+         {% else %}
+        <td style="color :red">Long</td>
+        {%endif%}
+      </tr>
+       {% endfor %}
+     </table>
+
+    </body>
+</html>
