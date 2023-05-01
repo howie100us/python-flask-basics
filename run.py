@@ -1,6 +1,6 @@
 
 from datetime import datetime
-from flask import Flask,request,render_template
+from flask import Flask,request,render_template, session,g
 from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
@@ -15,9 +15,14 @@ db = SQLAlchemy(app)
 
 app.app_context().push()
 
+@app.before_request
+def beforeReq():
+    g.string = "<br> Run before any request"
+
+
 @app.route("/")
 def hello():
-    return "Flask demo"
+    return "Flask demo"+g.string
 
 
 @app.route("/new/")
@@ -76,7 +81,11 @@ def macroPage():
     movieDict ={"Something From Tiffany's":1.27,"John Wick":3.20,"Black Panher":3.50,"Man On Fire":1.57,"iRobot":2.10,"Equalizer II":1.47}
     return render_template("using_macro.html",movies = movieDict)
 
-
+@app.route("/session")
+def session_data():
+    if "name" not in session:
+        session["name"] = "Hugh"
+        return render_template("session.html",session = session,name = session["name"])
 
 
 class Publication(db.Model):
@@ -195,6 +204,6 @@ if __name__ == "__main__":
     print(Book.getFirstBook(),"\n")
     print(Book.getAllBooksType(),"\n")
     print(Book.getAllBooksByTitle())
-    #app.run(debug = True)
+    app.run(debug = True)
 
     
